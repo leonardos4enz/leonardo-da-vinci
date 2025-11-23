@@ -84,7 +84,7 @@ client.on('guildMemberAdd', async member => {
     .setTitle('🚀 ¡Nuevo Inventor!')
     .setDescription(`¡Hola ${member}! Bienvenido a **${member.guild.name}**\n\n<:ai:1434657701614452986> Somos una comunidad de creadores que usan inteligencia artificial para imaginar, construir e innovar.\n\n<:blob_heart:1434660286924591155> Comparte tus ideas, aprende y da vida al futuro con nosotros.\n\n<:claude:1434658380756156628> **Miembro #${member.guild.memberCount}**`)
     .setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 512 }))
-    .setImage('https://lh3.googleusercontent.com/sitesv/AAzXCkee6ktnk3C7kY5OH6lPe1CqLcFo1ndRkjvjjpm-9i-NhhWyCH-W20B60U4wnv0e1wQHxO74_CUT0STxZvjHwC0sGesaoeyp2ZhmB28CzPZ1lXtQVvGERlmY38utikxiUqAdfEo1SwC0oUZQE583CBA3kIhZVnJXe8xpstHirjDZq5cqMm471NPI6qNgmhrf1GTzu5bRyHqu7tceVgUo3LSPPO22LrdSBNxTOZI=w1280')
+    .setImage('https://lh3.googleusercontent.com/d/1mvcip12qy5OBqXTTMBVP-IjAxE1Vru3K')
     .setFooter({ text: `¡Bienvenido inventor! • ID: ${member.id}` })
     .setTimestamp();
 
