@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Client, Collection, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, GatewayIntentBits, EmbedBuilder } = require('discord.js');
 const fs = require('fs');
 const path = require('path');
 
@@ -56,6 +56,29 @@ client.on('interactionCreate', async interaction => {
     } else {
       await interaction.reply(errorMessage);
     }
+  }
+});
+
+// Evento de bienvenida
+client.on('guildMemberAdd', async member => {
+  const WELCOME_CHANNEL_ID = '1431696442501894145';
+  const channel = member.guild.channels.cache.get(WELCOME_CHANNEL_ID);
+
+  if (!channel) return;
+
+  const embed = new EmbedBuilder()
+    .setColor('#5865F2')
+    .setTitle('🚀 ¡Nuevo Inventor!')
+    .setDescription(`¡Hola ${member}! Bienvenido a **${member.guild.name}**\n\n<:ai:1434657701614452986> Somos una comunidad de creadores que usan inteligencia artificial para imaginar, construir e innovar.\n\n<:blob_heart:1434660286924591155> Comparte tus ideas, aprende y da vida al futuro con nosotros.\n\n<:claude:1434658380756156628> **Miembro #${member.guild.memberCount}**`)
+    .setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 512 }))
+    .setImage('https://lh3.googleusercontent.com/sitesv/AAzXCkee6ktnk3C7kY5OH6lPe1CqLcFo1ndRkjvjjpm-9i-NhhWyCH-W20B60U4wnv0e1wQHxO74_CUT0STxZvjHwC0sGesaoeyp2ZhmB28CzPZ1lXtQVvGERlmY38utikxiUqAdfEo1SwC0oUZQE583CBA3kIhZVnJXe8xpstHirjDZq5cqMm471NPI6qNgmhrf1GTzu5bRyHqu7tceVgUo3LSPPO22LrdSBNxTOZI=w1280')
+    .setFooter({ text: `¡Bienvenido inventor! • ID: ${member.id}` })
+    .setTimestamp();
+
+  try {
+    await channel.send({ content: `¡${member} ha llegado!`, embeds: [embed] });
+  } catch (error) {
+    console.error('Error enviando mensaje de bienvenida:', error);
   }
 });
 

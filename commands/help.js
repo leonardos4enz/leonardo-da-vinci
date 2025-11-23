@@ -10,11 +10,11 @@ module.exports = {
       .setTitle('📚 Comandos Disponibles')
       .setDescription('Lista de comandos del bot')
       .addFields(
-        { name: '/ping', value: 'Muestra la latencia del bot', inline: true },
-        { name: '/help', value: 'Muestra esta ayuda', inline: true },
-        { name: '/serverinfo', value: 'Información del servidor', inline: true },
-        { name: '/userinfo', value: 'Información de un usuario', inline: true },
-        { name: '/avatar', value: 'Muestra el avatar de un usuario', inline: true }
+        { name: '🔧 General', value: '`/ping` `/help`', inline: false },
+        { name: '🛡️ Moderación', value: '`/ban` `/kick` `/timeout` `/clear` `/slowmode` `/lock` `/unlock`', inline: false },
+        { name: 'ℹ️ Información', value: '`/serverinfo` `/userinfo` `/avatar` `/roleinfo` `/channelinfo`', inline: false },
+        { name: '🎮 Entretenimiento', value: '`/8ball` `/coinflip` `/roll` `/choose`', inline: false },
+        { name: '🏠 Servidor', value: '`/invite` `/emojis`', inline: false }
       )
       .setTimestamp()
       .setFooter({ text: `Solicitado por ${interaction.user.tag}` });
