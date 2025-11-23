@@ -34,8 +34,21 @@ client.once('ready', () => {
   console.log(`🌐 Servidores: ${client.guilds.cache.size}\n`);
 });
 
-// Handler de comandos slash
+// Handler de comandos slash y autocomplete
 client.on('interactionCreate', async interaction => {
+  // Manejar autocomplete
+  if (interaction.isAutocomplete()) {
+    const command = client.commands.get(interaction.commandName);
+    if (!command || !command.autocomplete) return;
+
+    try {
+      await command.autocomplete(interaction);
+    } catch (error) {
+      console.error(`Error en autocomplete de ${interaction.commandName}:`, error);
+    }
+    return;
+  }
+
   if (!interaction.isChatInputCommand()) return;
 
   const command = client.commands.get(interaction.commandName);
